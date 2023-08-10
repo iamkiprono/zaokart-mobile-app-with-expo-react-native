@@ -10,24 +10,28 @@ import SearchInput from "./Components/SearchInput";
 import Cart from "./Components/Cart";
 import HomeNavigator from "./Navigators/HomeNavigator";
 
+import CartContextProvider from "./Context/CartContext";
+
 const Stack = createStackNavigator();
 
 const App = () => {
   return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen
-          options={{ headerShown: false }}
-          name="Main"
-          component={HomeNavigator}
-        />
-        <Stack.Screen
-          options={{ animationEnabled: false }}
-          name="Cart"
-          component={Cart}
-        />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <CartContextProvider>
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen
+            options={{ headerShown: false }}
+            name="Main"
+            component={HomeNavigator}
+          />
+          <Stack.Screen
+            options={{ animationEnabled: false }}
+            name="Cart"
+            component={Cart}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </CartContextProvider>
   );
 };
 

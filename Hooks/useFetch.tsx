@@ -6,12 +6,14 @@ export const getProducts = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
-  const getProducts = async () => {
+  const fetchProducts = async () => {
     try {
       setLoading(true);
-      setError("")
-      const res = await fetch("http://192.168.43.229:5000/products");
+      setError("");
+      const res = await fetch("http://192.168.43.181:5000/products");
+
       const data = await res.json();
+
       if (!res.ok) {
         throw Error(data.error);
       }
@@ -19,7 +21,7 @@ export const getProducts = () => {
       setProducts(data);
     } catch (error) {
       setLoading(false);
-      setProducts([])
+      setProducts([]);
       if (error instanceof Error) {
         setError(error.message);
       } else {
@@ -29,8 +31,8 @@ export const getProducts = () => {
   };
 
   useEffect(() => {
-    getProducts();
+    fetchProducts();
   }, []);
 
-  return { products, loading, error };
+  return { products, loading, error, fetchProducts };
 };

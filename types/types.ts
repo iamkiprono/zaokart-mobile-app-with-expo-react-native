@@ -16,10 +16,15 @@ export interface Products {
 export interface Cart {
   name: string;
   image: string;
-  price: string;
+  price: number;
+  id: string;
+  quantity: number;
 }
 
 export interface CartContextProps {
   cart: Cart[];
   updateCart: (newItem: Cart) => void;
+  increaseQuantity: (x: Cart) => void;
+  decreaseQuantity: (x: Cart) => void;
+  deleteItem: (x: Cart) => void;
 }

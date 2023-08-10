@@ -6,8 +6,9 @@ import Products from "./Products";
 import { getProducts } from "../Hooks/useFetch";
 
 const HomeScreen = () => {
+  const { products, loading, error, fetchProducts } = getProducts();
 
-  const { products, loading, error } = getProducts();
+  
 
   return (
     <View className="pt-8 flex-1">
@@ -18,7 +19,7 @@ const HomeScreen = () => {
           refreshControl={
             <RefreshControl
               refreshing={loading}
-              onRefresh={() => getProducts()}
+              onRefresh={() => fetchProducts()}
             />
           }
         >
@@ -50,6 +51,12 @@ const HomeScreen = () => {
           <Products
             products={
               products && products?.filter((x) => x.category === "Herbs")
+            }
+          />
+          {/* Legumes */}
+          <Products
+            products={
+              products && products?.filter((x) => x.category === "Legumes")
             }
           />
         </ScrollView>

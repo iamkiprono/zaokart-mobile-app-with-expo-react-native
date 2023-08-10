@@ -1,6 +1,7 @@
 import { View, Text, ScrollView, Image } from "react-native";
 
 const Categories = () => {
+
   const categories = [
     {
       name: "Fruits",

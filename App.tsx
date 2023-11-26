@@ -11,6 +11,10 @@ import Cart from "./Components/Cart";
 import HomeNavigator from "./Navigators/HomeNavigator";
 
 import CartContextProvider from "./Context/CartContext";
+import CheckoutScreen from "./Screens/CheckoutScreen";
+import AddressScreen from "./Screens/AddressScreen";
+import PayScreen from "./Screens/PayScreen";
+import OrderPlaced from "./Screens/OrderPlaced";
 
 const Stack = createStackNavigator();
 
@@ -28,6 +32,26 @@ const App = () => {
             options={{ animationEnabled: false }}
             name="Cart"
             component={Cart}
+          />
+          <Stack.Screen
+            options={{ animationEnabled: false }}
+            name="Checkout"
+            component={CheckoutScreen}
+          />
+          <Stack.Screen
+            options={{ animationEnabled: false }}
+            name="Address"
+            component={AddressScreen}
+          />
+          <Stack.Screen
+            options={{ animationEnabled: false }}
+            name="Pay"
+            component={PayScreen}
+          />
+          <Stack.Screen
+            options={{ animationEnabled: false }}
+            name="OrderPlaced"
+            component={OrderPlaced}
           />
         </Stack.Navigator>
       </NavigationContainer>

@@ -9,7 +9,7 @@ import { useNavigation } from "@react-navigation/native";
 const Cart = () => {
   const { cart } = useContext<any>(CartContext);
 
-  const navigation = useNavigation();
+  const navigation = useNavigation<any>();
 
   const totalCost = cart.reduce((previousVal: number, currentVal: cartType) => {
     return previousVal + currentVal.price * currentVal.quantity;
@@ -38,8 +38,13 @@ const Cart = () => {
           </ScrollView>
 
           <View className="p-6 flex-row items-center justify-between">
-            <Text className="font-bold text-lg">Total:{totalCost}</Text>
-            <TouchableOpacity className="bg-[#be4949] p-6">
+            <Text className="font-bold text-lg">
+              Total:{totalCost.toFixed(2)}
+            </Text>
+            <TouchableOpacity
+              onPress={() => navigation.navigate("Checkout")}
+              className="bg-[#be4949] p-6"
+            >
               <Text className="text-white">Checkout</Text>
             </TouchableOpacity>
           </View>
